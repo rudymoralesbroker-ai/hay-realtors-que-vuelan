@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hay Realtors Que Vuelan – Jueves 4 de Junio | Team Rudy</title>
+  <meta name="description" content="Evento gratuito con Rudy Morales – Real Estate Broker. Jueves 4 de junio, 7:00 PM (Florida) vía Google Meet. Mentalidad, productividad y negocios para Realtors."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2e;
+      --navy2: #0f2240;
+      --gold: #c9a227;
+      --gold2: #e8bc3a;
+      --white: #ffffff;
+      --light: #d4e4f7;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #0a1628 0%, #0f2240 50%, #0a1628 100%);
+      padding: 60px 20px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--gold);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(201,162,39,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .logo-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 6px 20px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(42px, 9vw, 88px);
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .hero-title .hay { color: var(--white); }
+    .hero-title .realtors { color: var(--gold); display: block; }
+    .hero-title .que { color: var(--white); font-size: 0.55em; letter-spacing: 8px; }
+    .hero-title .vuelan { color: var(--gold); display: block; font-style: italic; }
+
+    .hero-tagline {
+      margin-top: 20px;
+      font-size: clamp(13px, 2vw, 16px);
+      font-weight: 600;
+      color: var(--light);
+      letter-spacing: 1px;
+      line-height: 1.5;
+    }
+
+    /* ── EVENT INFO PILLS ── */
+    .event-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 36px auto 0;
+      max-width: 700px;
+    }
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(201,162,39,0.12);
+      border: 1.5px solid var(--gold);
+      border-radius: 50px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .pill .icon { font-size: 20px; }
+    .pill .label { color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 1px; display: block; }
+
+    /* ── HOST SECTION ── */
+    .host {
+      background: var(--navy2);
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    .host-name {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .host-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--light);
+      text-transform: uppercase;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,162,39,0.25);
+      border-radius: 14px;
+      padding: 24px 18px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover { border-color: var(--gold); }
+    .feature-icon { font-size: 32px; margin-bottom: 12px; }
+    .feature-title { font-size: 13px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+    .feature-desc { font-size: 12px; color: var(--light); margin-top: 6px; line-height: 1.5; }
+
+    .section-label {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    /* ── CTA / FORM SECTION ── */
+    .form-section {
+      background: var(--navy2);
+      padding: 56px 20px;
+      border-top: 3px solid var(--gold);
+    }
+    .form-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .form-intro {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .form-intro p {
+      color: var(--light);
+      font-size: 15px;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .free-badge {
+      display: inline-block;
+      background: #1a4a2a;
+      border: 1.5px solid #25d366;
+      color: #25d366;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    .form-embed {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 2px solid var(--gold);
+    }
+    .form-embed iframe {
+      width: 100%;
+      height: 620px;
+      border: none;
+      display: block;
+    }
+
+    /* ── MEET LINK ── */
+    .meet-box {
+      max-width: 700px;
+      margin: 40px auto 0;
+      background: rgba(201,162,39,0.08);
+      border: 1.5px solid var(--gold);
+      border-radius: 14px;
+      padding: 22px 28px;
+      text-align: center;
+    }
+    .meet-box .meet-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .meet-link {
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 10px 24px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+    .meet-link:hover { background: var(--gold2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #07111f;
+      border-top: 3px solid var(--gold);
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .footer-sub {
+      font-size: 11px;
+      color: var(--light);
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+    .footer-tagline {
+      margin-top: 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="logo-badge">Team Rudy · Florida Realty Investment</div>
+    <p class="hero-eyebrow">Evento especial para Realtors</p>
+    <h1 class="hero-title">
+      <span class="hay">Hay</span>
+      <span class="realtors">Realtors</span>
+      <span class="que">— que —</span>
+      <span class="vuelan">Vuelan</span>
+    </h1>
+    <p class="hero-tagline">
+      "Todos tienen las mismas 24 horas.<br>
+      <strong>La diferencia es quién toma acción.</strong>"
+    </p>
+
+    <div class="event-pills">
+      <div class="pill">
+        <span class="icon">📅</span>
+        <div>
+          <span class="label">Fecha</span>
+          Jueves 4 de Junio
+        </div>
+      </div>
+      <div class="pill">
+        <span class="icon">🕖</span>
+        <div>
+          <span class="label">Hora</span>
+          7:00 PM Florida
+        </div>
+      </div>
+      <div class="pill">
+        <span class="icon">📹</span>
+        <div>
+          <span class="label">Plataforma</span>
+          Google Meet
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOST -->
+  <section class="host">
+    <p style="font-size:12px;letter-spacing:2px;color:var(--light);text-transform:uppercase;margin-bottom:6px;">Con</p>
+    <div class="host-name">Rudy Morales</div>
+    <div class="host-title">Real Estate Broker · Florida</div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <p class="section-label">Lo que vas a aprender</p>
+    <h2 class="section-title">Mentalidad de Águila 🦅</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Mentalidad Ganadora</div>
+        <div class="feature-desc">Piensa como los Realtors que cierran negocios sin parar.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Productividad</div>
+        <div class="feature-desc">Las mismas 24 horas, resultados completamente diferentes.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-title">Relaciones</div>
+        <div class="feature-desc">Construye conexiones que abren puertas en el mercado.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏡</div>
+        <div class="feature-title">Negocios</div>
+        <div class="feature-desc">Estrategias reales que cambian vidas — la tuya y la de tus clientes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="form-section">
+    <div class="form-wrapper">
+      <div class="form-intro">
+        <p class="section-label">Entrada gratuita</p>
+        <h2 class="section-title">Regístrate Ahora</h2>
+        <p>Llena el formulario y recibirás el link de Google Meet directo en tu correo — automáticamente.</p>
+        <span class="free-badge">✅ 100% GRATIS</span>
+      </div>
+
+      <div class="form-embed">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfe7JG8bQt2j0tDoplA-MSfebambCZbWboywADZtCDiY6P6bQ/viewform?embedded=true"
+          title="Formulario de registro – Hay Realtors Que Vuelan"
+          loading="lazy">
+          Cargando formulario…
+        </iframe>
+      </div>
+
+      <div class="meet-box">
+        <div class="meet-label">📹 Link de Google Meet</div>
+        <p style="color:var(--light);font-size:13px;margin-bottom:4px;">Al registrarte recibes el link por email. También puedes unirte directo:</p>
+        <a class="meet-link" href="https://meet.google.com/mfm-zzte-iwk" target="_blank">
+          🔗 meet.google.com/mfm-zzte-iwk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Team Rudy</div>
+    <div class="footer-sub">Florida Realty Investment · By Rudy Morales, Real Estate Broker</div>
+    <div class="footer-tagline">Aprende · Actúa · Crece · Vuela Más Alto 🦅</div>
+  </footer>
+
+</body>
+</html>
