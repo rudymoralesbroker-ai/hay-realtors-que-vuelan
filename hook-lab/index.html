@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hook Lab – Ganchos verificados | Team Rudy</title>
-  <meta name="description" content="Genera ganchos para tu negocio inmobiliario solo a partir de publicaciones reales que tú confirmaste." />
+  <meta name="description" content="Genera ganchos para vender inversión inmobiliaria en Florida a latinos, dentro y fuera del estado, y a extranjeros, solo a partir de publicaciones reales que tú confirmaste." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -53,8 +53,8 @@
     textarea { min-height: 90px; resize: vertical; }
     .row { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
-    .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--light); margin: 4px 0 14px; }
-    .check input { width: auto; margin-top: 3px; }
+    .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--light); margin: 4px 0 14px; text-transform: none; letter-spacing: 0; }
+    .check input { width: auto; margin: 3px 0 0; }
 
     button {
       background: var(--gold); color: var(--navy); border: none; border-radius: 50px;
@@ -64,6 +64,13 @@
     button:hover { filter: brightness(1.08); }
 
     .error { color: #ff8a80; font-size: 13px; min-height: 18px; margin-bottom: 6px; }
+
+    .checklist {
+      background: rgba(255,255,255,0.03); border: 1px dashed var(--line);
+      border-radius: 10px; padding: 14px 16px; margin-bottom: 18px;
+    }
+    .checklist ul { font-size: 13px; color: var(--light); padding-left: 18px; margin-top: 6px; }
+    .checklist li { margin: 4px 0; }
 
     .gen-grid { display: grid; gap: 16px; }
     .pattern {
@@ -78,7 +85,6 @@
     .badge.sin { background: rgba(142,163,191,0.12); color: var(--muted); border: 1px solid var(--muted); }
 
     .hook { font-size: 16px; margin: 12px 0; color: var(--white); }
-    .hook-empty { color: var(--muted); font-style: italic; }
     .ev-list { font-size: 13px; color: var(--light); padding-left: 18px; margin-top: 8px; }
     .ev-list li { margin: 4px 0; }
     .ev-list a { color: var(--gold); word-break: break-all; }
@@ -92,14 +98,14 @@
 
   <header>
     <h1>Hook Lab</h1>
-    <p class="sub">Ganchos basados en publicaciones reales que tú confirmaste · Team Rudy</p>
+    <p class="sub">Ganchos para invertir en Florida, dirigidos a latinos y extranjeros · Team Rudy</p>
   </header>
 
   <div class="notice">
-    <strong>Cómo funciona la verificación:</strong> un patrón solo aparece como <em>verificado</em> cuando hay
-    publicaciones de al menos <strong>3 cuentas distintas</strong>, cada una con enlace y con la casilla
-    "la abrí y confirmo" marcada por ti. La herramienta no puede comprobar por sí sola que una publicación exista
-    ni garantiza resultados: la verificación es tuya y depende de los enlaces que cargas.
+    <strong>Cómo funciona la verificación:</strong> un gancho solo aparece como <em>verificado</em> cuando hay
+    publicaciones de al menos <strong>3 cuentas distintas</strong> <strong>para el mismo público</strong>, cada una con enlace
+    y con la casilla "la abrí y confirmo" marcada por ti. La herramienta no puede comprobar por sí sola que una publicación
+    exista, no garantiza resultados y no verifica datos legales o fiscales: eso lo confirmas tú con fuentes oficiales o con tu contador.
   </div>
 
   <main>
@@ -107,18 +113,24 @@
     <!-- GENERADOR -->
     <section>
       <h2>1 · Genera ganchos</h2>
+
+      <label for="publico">Público</label>
+      <select id="publico"></select>
+
+      <div class="checklist" id="checklist"></div>
+
       <div class="row">
         <div>
-          <label for="tema">Tema</label>
-          <input id="tema" placeholder="ej. compradores primerizos" />
+          <label for="tema">Tema o creencia</label>
+          <input id="tema" placeholder="ej. que necesitas un Social Security para comprar" />
         </div>
         <div>
           <label for="ciudad">Ciudad / zona</label>
-          <input id="ciudad" placeholder="ej. Orlando" />
+          <input id="ciudad" placeholder="ej. Orlando, Kissimmee, Miami" />
         </div>
       </div>
-      <label for="detalle">Dato, idea o historia concreta</label>
-      <textarea id="detalle" placeholder="ej. el 80% de mis compradores primerizos me pregunta por el seguro de inundación antes que por la casa"></textarea>
+      <label for="detalle">Dato, ventaja o historia concreta</label>
+      <textarea id="detalle" placeholder="ej. sin impuesto estatal sobre el ingreso, y tu familia puede heredar la propiedad"></textarea>
       <div class="actions">
         <button id="btn-generar">Generar ganchos</button>
       </div>
@@ -131,21 +143,27 @@
       <p class="muted" style="margin-bottom:14px">Abre el enlace primero. Solo agrega publicaciones que existan y que realmente hayan funcionado para su cuenta.</p>
       <div class="row">
         <div>
+          <label for="ev-publico">Público de la publicación</label>
+          <select id="ev-publico"></select>
+        </div>
+        <div>
           <label for="ev-pattern">Patrón del gancho</label>
           <select id="ev-pattern"></select>
         </div>
+      </div>
+      <div class="row">
         <div>
           <label for="ev-account">Cuenta (@usuario)</label>
           <input id="ev-account" placeholder="@cuenta" />
+        </div>
+        <div>
+          <label for="ev-date">Fecha</label>
+          <input id="ev-date" type="date" />
         </div>
       </div>
       <label for="ev-url">Enlace a la publicación</label>
       <input id="ev-url" placeholder="https://..." />
       <div class="row">
-        <div>
-          <label for="ev-date">Fecha</label>
-          <input id="ev-date" type="date" />
-        </div>
         <div>
           <label for="ev-views">Vistas / alcance (opcional)</label>
           <input id="ev-views" type="number" min="0" />
@@ -170,15 +188,50 @@
 
 <script>
   // Registros verificados de origen. Agrega aquí las publicaciones que hayas confirmado.
-  // Formato: { pattern, account, url, date, views, hook, confirmed: true }
+  // Formato: { audience, pattern, account, url, date, views, hook, confirmed: true }
   const SEED_EVIDENCE = [];
 
+  // Públicos. "checks" son datos que hay que comprobar con fuentes oficiales antes de publicar.
+  const AUDIENCES = {
+    florida: {
+      label: 'Latinos que viven en Florida',
+      who: 'latinos que ya viven en Florida y quieren invertir o cambiar de casa',
+      checks: [
+        'Impuesto estatal sobre el ingreso en Florida (verificar con el Departamento de Hacienda de Florida).',
+        'Tasas de impuesto a la propiedad y exenciones como Homestead (verificar con el condado).',
+        'Seguros de inundación y de huracán: costo y requisitos actuales.',
+        'Cifras de precios y de alquiler de tu zona con fecha.'
+      ]
+    },
+    fuera: {
+      label: 'Latinos que viven fuera de Florida',
+      who: 'latinos que viven en otro estado de EE.UU. o en otra ciudad y quieren invertir en Florida',
+      checks: [
+        'Qué pasa con la propiedad si el inversionista vive en otro estado (administración a distancia, impuestos).',
+        'Requisitos de financiamiento para inversionistas que no viven en Florida.',
+        'Cifras de rentabilidad (renta, ocupación, plusvalía) de la zona con fecha.',
+        'Si necesitas licencia de Florida para representar a compradores de otros estados.'
+      ]
+    },
+    extranjero: {
+      label: 'Extranjeros que viven fuera de EE.UU.',
+      who: 'personas de otros países, en Latinoamérica o en otro lugar, que quieren invertir en EE.UU.',
+      checks: [
+        'Requisitos para extranjeros no residentes que compran propiedad (SSN/ITIN, financiamiento, cuentas bancarias).',
+        'Impuestos aplicables a no residentes sobre renta y venta de propiedad (verificar con un contador especializado).',
+        'Tipo de cambio y costos de transferencia de dinero: cifras con fecha.',
+        'Que no les estés dando asesoría legal o fiscal: remítelos a un profesional autorizado.'
+      ]
+    }
+  };
+
   const PATTERNS = {
-    contrario: { label: 'Contrario', tpl: 'Todos dicen que {tema}. Yo digo lo contrario: {detalle}.' },
-    error:     { label: 'Error común', tpl: 'El error más caro que veo en Realtors que trabajan {tema} en {ciudad}: {detalle}.' },
-    lista:     { label: 'Lista', tpl: '3 cosas que aprendí sobre {tema} en {ciudad}. La número 2 casi nadie la aplica: {detalle}.' },
-    historia:  { label: 'Historia', tpl: 'Un cliente me dijo: "{detalle}". Desde ese día cambié cómo trabajo {tema} en {ciudad}.' },
-    pregunta:  { label: 'Pregunta', tpl: '¿Sabías que {detalle}? Si trabajas {tema} en {ciudad}, esto te afecta directamente.' }
+    contrario: { label: 'Contrario', tpl: 'Mucha gente de {publico} cree que {tema}. Yo digo lo contrario: {detalle}.' },
+    mito:      { label: 'Mito vs. realidad', tpl: 'Mito: {tema}. La realidad para {publico}: {detalle}.' },
+    ventaja:   { label: 'Ventaja concreta', tpl: 'Si eres de {publico}, esta es una ventaja de invertir en {ciudad}: {detalle}.' },
+    error:     { label: 'Error común', tpl: 'El error más caro que veo en {publico} que quieren invertir en {ciudad}: {detalle}.' },
+    historia:  { label: 'Historia', tpl: 'Un cliente de {publico} me dijo: "{detalle}". Desde ese día cambié cómo le explico {tema} en {ciudad}.' },
+    pregunta:  { label: 'Pregunta', tpl: '¿Sabías que {detalle}? Si piensas invertir en {ciudad}, esto te afecta directamente.' }
   };
 
   const MIN_ACCOUNTS = 3;
@@ -200,21 +253,23 @@
     ];
   }
 
-  // Un patrón cuenta como verificado solo con enlaces confirmados por tu mano, de cuentas distintas.
-  function statusFor(key) {
-    const ok = allEvidence().filter((e) => e.pattern === key && e.confirmed === true && isSafeUrl(e.url));
+  function isSafeUrl(u) {
+    try { const p = new URL(u); return p.protocol === 'https:' || p.protocol === 'http:'; } catch (e) { return false; }
+  }
+
+  // Un gancho cuenta como verificado solo con enlaces confirmados por ti, de cuentas distintas, para el mismo público.
+  function statusFor(patternKey, audienceKey) {
+    const ok = allEvidence().filter((e) =>
+      e.pattern === patternKey && e.audience === audienceKey && e.confirmed === true && isSafeUrl(e.url));
     const accounts = new Set(ok.map((e) => String(e.account || '').trim().toLowerCase()).filter(Boolean));
     const n = accounts.size;
     const level = n >= MIN_ACCOUNTS ? 'verificado' : n > 0 ? 'parcial' : 'sin';
     return { level, accounts: n, evidence: ok };
   }
 
-  function isSafeUrl(u) {
-    try { const p = new URL(u); return p.protocol === 'https:' || p.protocol === 'http:'; } catch (e) { return false; }
-  }
-
   function fill(tpl, vals) {
     return tpl
+      .replaceAll('{publico}', vals.publico)
       .replaceAll('{tema}', vals.tema)
       .replaceAll('{ciudad}', vals.ciudad)
       .replaceAll('{detalle}', vals.detalle);
@@ -222,9 +277,9 @@
 
   const LEVEL_TEXT = { verificado: 'Verificado', parcial: 'Parcial', sin: 'Sin evidencia' };
   const LEVEL_HINT = {
-    verificado: 'Hay publicaciones de 3 o más cuentas confirmadas.',
-    parcial: 'Hay evidencia, pero menos de 3 cuentas. Úsalo con cuidado.',
-    sin: 'Sin publicaciones confirmadas. Es una idea sin probar.'
+    verificado: 'Hay publicaciones de 3 o más cuentas confirmadas para este público.',
+    parcial: 'Hay evidencia para este público, pero menos de 3 cuentas. Úsalo con cuidado.',
+    sin: 'Sin publicaciones confirmadas para este público. Es una idea sin probar.'
   };
 
   function el(tag, props = {}, children = []) {
@@ -234,50 +289,64 @@
     return node;
   }
 
+  function currentAudience() { return $('publico').value; }
+
+  function renderChecklist() {
+    const a = AUDIENCES[currentAudience()];
+    $('checklist').replaceChildren(
+      el('strong', { textContent: 'Antes de publicar, verifica para: ' + a.label }),
+      el('ul', {}, a.checks.map((c) => el('li', { textContent: c })))
+    );
+  }
+
   function renderPatterns() {
+    const aKey = currentAudience();
     const vals = {
-      tema: $('tema').value.trim() || '[tema]',
+      publico: AUDIENCES[aKey].who,
+      tema: $('tema').value.trim() || '[tema o creencia]',
       ciudad: $('ciudad').value.trim() || '[ciudad]',
-      detalle: $('detalle').value.trim() || '[dato o historia]'
+      detalle: $('detalle').value.trim() || '[dato, ventaja o historia]'
     };
     const box = $('patterns');
     box.replaceChildren();
 
     const cards = Object.entries(PATTERNS).map(([key, p]) => {
-      const st = statusFor(key);
+      const st = statusFor(key, aKey);
       return { key, p, st, rank: { verificado: 0, parcial: 1, sin: 2 }[st.level] };
     }).sort((a, b) => a.rank - b.rank);
 
-    for (const { key, p, st } of cards) {
-      const hookText = fill(p.tpl, vals);
+    for (const { p, st } of cards) {
       const evList = el('ul', { className: 'ev-list' }, st.evidence.map((e) => {
         const a = el('a', { href: e.url, target: '_blank', rel: 'noopener noreferrer', textContent: e.url });
         const meta = [e.account, e.date, e.views ? e.views + ' vistas' : null].filter(Boolean).join(' · ');
         return el('li', {}, [document.createTextNode(meta + ' — '), a, e.local ? el('span', { className: 'local-tag', textContent: 'local' }) : document.createTextNode('')]);
       }));
 
-      const card = el('div', { className: 'pattern' }, [
+      box.append(el('div', { className: 'pattern' }, [
         el('div', { className: 'pattern-head' }, [
           el('span', { className: 'pattern-name', textContent: p.label }),
           el('span', { className: 'badge ' + st.level, textContent: LEVEL_TEXT[st.level] + ' · ' + st.accounts + ' cuenta(s)' })
         ]),
-        el('div', { className: 'hook', textContent: hookText }),
+        el('div', { className: 'hook', textContent: fill(p.tpl, vals) }),
         el('div', { className: 'muted', textContent: LEVEL_HINT[st.level] }),
         st.evidence.length ? evList : el('div', { className: 'muted', textContent: 'Sin publicaciones confirmadas todavía.' })
-      ]);
-      box.append(card);
+      ]));
     }
+    renderChecklist();
   }
 
-  function renderPatternOptions() {
-    const sel = $('ev-pattern');
-    sel.replaceChildren(...Object.entries(PATTERNS).map(([k, p]) => el('option', { value: k, textContent: p.label })));
+  function renderOptions() {
+    const audOpts = Object.entries(AUDIENCES).map(([k, a]) => el('option', { value: k, textContent: a.label }));
+    $('publico').replaceChildren(...audOpts);
+    $('ev-publico').replaceChildren(...Object.entries(AUDIENCES).map(([k, a]) => el('option', { value: k, textContent: a.label })));
+    $('ev-pattern').replaceChildren(...Object.entries(PATTERNS).map(([k, p]) => el('option', { value: k, textContent: p.label })));
   }
 
   function addEvidence() {
     const errorBox = $('ev-error');
     errorBox.textContent = '';
     const rec = {
+      audience: $('ev-publico').value,
       pattern: $('ev-pattern').value,
       account: $('ev-account').value.trim(),
       url: $('ev-url').value.trim(),
@@ -309,13 +378,14 @@
     renderPatterns();
   }
 
+  $('publico').addEventListener('change', renderPatterns);
   $('btn-generar').addEventListener('click', renderPatterns);
   $('btn-add').addEventListener('click', addEvidence);
   $('btn-export').addEventListener('click', exportLocal);
   $('btn-clear').addEventListener('click', clearLocal);
   ['tema', 'ciudad', 'detalle'].forEach((id) => $(id).addEventListener('input', renderPatterns));
 
-  renderPatternOptions();
+  renderOptions();
   renderPatterns();
 </script>
 </body>
