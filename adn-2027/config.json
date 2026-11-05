@@ -1,0 +1,32 @@
+{
+  "_nota": "Reemplaza estos valores de ejemplo con tus números reales en USD. La calculadora no los guarda en ningún otro lugar.",
+  "finanzas": {
+    "gastos_fijos_mensuales": 1000,
+    "marketing_mensual": 300,
+    "ingreso_neto_deseado_mensual": 2500,
+    "reserva_impuestos_pct": 0.10
+  },
+  "ventas": {
+    "ticket_promedio": 100000,
+    "comision_pct": 0.03,
+    "split_asesor_pct": 0.5
+  },
+  "alquileres": {
+    "ticket_mensual_promedio": 600,
+    "comision_meses": 1.0,
+    "split_asesor_pct": 0.5
+  },
+  "mix_ventas_pct": 0.6,
+  "embudo": {
+    "venta_lead_a_cita": 0.10,
+    "venta_cita_a_cierre": 0.20,
+    "alquiler_lead_a_cita": 0.15,
+    "alquiler_cita_a_cierre": 0.30,
+    "captacion_a_venta": 0.30
+  },
+  "pauta": {
+    "costo_por_lead": 3.0,
+    "pct_leads_pagados": 0.5
+  },
+  "semanas_trabajo": 46
+}

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADN 2027 · Casa Propia</title>
+<meta name="description" content="Presentación ADN 2027 para asesores de Casa Propia Realty Venezuela: nicho, contenido, metas, marca personal y análisis de perfil." />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2e;
+    --navy2: #0f2240;
+    --gold: #c9a227;
+    --gold2: #e8bc3a;
+    --white: #ffffff;
+    --light: #d4e4f7;
+    --muted: rgba(212,228,247,0.75);
+    --card: rgba(255,255,255,0.05);
+    --line: rgba(201,162,39,0.35);
+  }
+
+  html, body { height: 100%; }
+  body {
+    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow: hidden;
+  }
+
+  .deck { position: fixed; inset: 0; }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px clamp(20px, 6vw, 90px) 80px;
+    background: linear-gradient(160deg, #0a1628 0%, #0f2240 55%, #0a1628 100%);
+    overflow-y: auto;
+  }
+  .slide.active { display: flex; }
+  .slide::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 80% 20%, rgba(201,162,39,0.10) 0%, transparent 60%);
+  }
+  .slide > * { position: relative; }
+
+  .tag {
+    display: inline-block; align-self: flex-start;
+    font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--navy); background: var(--gold);
+    padding: 6px 16px; border-radius: 20px; margin-bottom: 18px;
+  }
+  h1 { font-size: clamp(38px, 7vw, 84px); font-weight: 900; line-height: 1.02; text-transform: uppercase; }
+  h2 { font-size: clamp(28px, 4.6vw, 52px); font-weight: 900; line-height: 1.1; margin-bottom: 18px; }
+  h2 .gold, h1 .gold { color: var(--gold); }
+  p.lead { font-size: clamp(16px, 2vw, 20px); color: var(--light); line-height: 1.55; max-width: 860px; }
+  .sub { color: var(--muted); font-size: clamp(13px, 1.6vw, 15px); margin-top: 10px; }
+
+  ul.bullets { list-style: none; margin-top: 18px; display: grid; gap: 12px; max-width: 900px; }
+  ul.bullets li {
+    font-size: clamp(15px, 1.9vw, 19px); color: var(--light); line-height: 1.45;
+    padding-left: 28px; position: relative;
+  }
+  ul.bullets li::before {
+    content: ''; position: absolute; left: 0; top: 0.5em;
+    width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+  }
+  ul.bullets li strong { color: var(--white); }
+
+  .grid { display: grid; gap: 16px; margin-top: 24px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px;
+  }
+  .card .num { font-size: 34px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .card .ttl { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 8px; color: var(--white); }
+  .card .txt { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  table { width: 100%; max-width: 940px; border-collapse: collapse; margin-top: 20px; font-size: clamp(13px, 1.7vw, 16px); }
+  th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(201,162,39,0.2); }
+  th { color: var(--gold); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
+  td { color: var(--light); }
+  td.big { color: var(--white); font-weight: 900; font-size: clamp(16px, 2.2vw, 22px); }
+
+  .steps { display: grid; gap: 14px; margin-top: 22px; max-width: 900px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .step .n { flex: 0 0 40px; height: 40px; border-radius: 50%; background: var(--gold); color: var(--navy); font-weight: 900; display: flex; align-items: center; justify-content: center; }
+  .step .t { font-size: clamp(14px, 1.8vw, 17px); color: var(--light); line-height: 1.45; }
+  .step .t strong { color: var(--white); }
+
+  .quote {
+    font-size: clamp(20px, 3.2vw, 34px); font-style: italic; font-weight: 700; color: var(--gold2);
+    border-left: 4px solid var(--gold); padding-left: 22px; margin-top: 24px; max-width: 880px; line-height: 1.35;
+  }
+
+  .alert { margin-top: 20px; background: rgba(201,162,39,0.10); border: 1.5px solid var(--gold); border-radius: 12px; padding: 14px 18px; color: var(--light); font-size: 15px; max-width: 900px; line-height: 1.5; }
+  .alert strong { color: var(--gold2); }
+
+  .brand { font-size: 13px; letter-spacing: 3px; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-top: 26px; }
+
+  /* Controles */
+  .controls {
+    position: fixed; left: 0; right: 0; bottom: 0; height: 60px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 0 20px; background: rgba(7,17,31,0.92); border-top: 2px solid var(--gold); z-index: 5;
+  }
+  .controls button {
+    background: var(--gold); color: var(--navy); border: 0; border-radius: 40px;
+    font: inherit; font-weight: 700; font-size: 14px; padding: 9px 18px; cursor: pointer;
+  }
+  .controls button:disabled { opacity: 0.35; cursor: default; }
+  .controls button:hover:not(:disabled) { background: var(--gold2); }
+  .counter { font-size: 13px; color: var(--light); font-weight: 600; letter-spacing: 1px; }
+  .progress { position: fixed; top: 0; left: 0; height: 4px; background: var(--gold); transition: width 0.3s; z-index: 6; }
+
+  @media (max-width: 600px) {
+    .slide { padding: 48px 16px 90px; }
+    table, th, td { font-size: 13px; }
+    th, td { padding: 9px 8px; }
+  }
+  @media print {
+    body { overflow: visible; }
+    .deck { position: static; }
+    .slide { display: flex !important; position: relative; height: auto; min-height: 100vh; page-break-after: always; }
+    .controls, .progress { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<main class="deck" id="deck">
+
+  <!-- 1. PORTADA -->
+  <section class="slide active">
+    <span class="tag">Team Rudy · Casa Propia Realty</span>
+    <h1>ADN <span class="gold">2027</span></h1>
+    <p class="lead" style="margin-top:22px;">Cómo nos organizamos como asesores para tener casa propia, cerrar más y construir una marca personal que trabaje por nosotros.</p>
+    <p class="brand">Aprende · Actúa · Crece · Vuela más alto</p>
+  </section>
+
+  <!-- 2. PROPÓSITO -->
+  <section class="slide">
+    <span class="tag">01 · Propósito</span>
+    <h2>Por qué <span class="gold">2027</span> tiene que ser distinto</h2>
+    <p class="lead">Todos tenemos las mismas 24 horas. La diferencia está en tener un plan, medirlo y ajustarlo cada mes.</p>
+    <div class="grid">
+      <div class="card"><div class="num">21</div><div class="ttl">Ventas al año</div><div class="txt">Ejemplo con el presupuesto de la calculadora.</div></div>
+      <div class="card"><div class="num">68</div><div class="ttl">Alquileres</div><div class="txt">Flujo constante entre ventas.</div></div>
+      <div class="card"><div class="num">70</div><div class="ttl">Captaciones</div><div class="txt">Propiedades que controlamos nosotros.</div></div>
+    </div>
+    <p class="sub">Cifras de ejemplo. Cada asesor pone sus propios números.</p>
+  </section>
+
+  <!-- 3. NICHO -->
+  <section class="slide">
+    <span class="tag">02 · Nicho</span>
+    <h2>Dónde <span class="gold">ganamos</span></h2>
+    <ul class="bullets">
+      <li><strong>Primera vivienda:</strong> familias y profesionales jóvenes que hoy pagan renta. Es la mayor demanda y donde más podemos ayudar.</li>
+      <li><strong>Diáspora:</strong> personas que compran desde el exterior para su familia o como inversión.</li>
+      <li><strong>Regla:</strong> cada asesor elige un nicho y lo trabaja 90 días antes de cambiarlo.</li>
+    </ul>
+    <div class="quote">"Ayudo a [quién] a [resultado] en [zona], evitando [dolor]."</div>
+  </section>
+
+  <!-- 4. ORGANIZACIÓN -->
+  <section class="slide">
+    <span class="tag">03 · Organización</span>
+    <h2>Del lead al <span class="gold">cierre</span></h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="t"><strong>Lead:</strong> entra por redes, referidos o la oficina. Próximo paso y fecha siempre.</div></div>
+      <div class="step"><div class="n">2</div><div class="t"><strong>Calificado:</strong> presupuesto, plazo y financiamiento claros en 5 preguntas.</div></div>
+      <div class="step"><div class="n">3</div><div class="t"><strong>Cita o visita:</strong> llegamos con propuesta y lista de documentos.</div></div>
+      <div class="step"><div class="n">4</div><div class="t"><strong>Reserva y cierre:</strong> seguimiento hasta el final, sin dejar que se enfríe.</div></div>
+    </div>
+    <p class="sub">Regla de la semana: bloques fijos de prospección (mañana) y de captación (miércoles).</p>
+  </section>
+
+  <!-- 5. CONTENIDO -->
+  <section class="slide">
+    <span class="tag">04 · Contenido</span>
+    <h2>Cuánto, <span class="gold">cuándo</span> y cómo</h2>
+    <table>
+      <thead><tr><th>Formato</th><th>Frecuencia</th><th>Para qué</th></tr></thead>
+      <tbody>
+        <tr><td>Reels / TikTok</td><td class="big">3 por semana</td><td>Alcance y gancho</td></tr>
+        <tr><td>Carrusel educativo</td><td class="big">1 por semana</td><td>Autoridad y guardados</td></tr>
+        <tr><td>Historias</td><td class="big">Diarias</td><td>Cercanía y confianza</td></tr>
+        <tr><td>En vivo o preguntas</td><td class="big">Cada 2 semanas</td><td>Comunidad y citas</td></tr>
+      </tbody>
+    </table>
+    <p class="sub">Horarios sugeridos (Caracas): 7–9 a. m., 12–1 p. m. y 7–9 p. m. Ajustar con las métricas a las 4 semanas.</p>
+  </section>
+
+  <!-- 6. MÉTODO DE CONTENIDO -->
+  <section class="slide">
+    <span class="tag">05 · Método</span>
+    <h2>Cómo <span class="gold">creamos</span> cada pieza</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="t"><strong>Banco de ideas:</strong> 15 preguntas reales que nos hicieron esta semana.</div></div>
+      <div class="step"><div class="n">2</div><div class="t"><strong>Gancho:</strong> "Lo que nadie te dice sobre…", "Errores que cometen…", "Si estás rentando…"</div></div>
+      <div class="step"><div class="n">3</div><div class="t"><strong>Guion en 3 partes:</strong> gancho (2 s) · valor (30 s) · acción (5 s).</div></div>
+      <div class="step"><div class="n">4</div><div class="t"><strong>Grabar en lote y responder comentarios</strong> en los primeros 30 minutos.</div></div>
+    </div>
+  </section>
+
+  <!-- 7. METAS -->
+  <section class="slide">
+    <span class="tag">06 · Metas</span>
+    <h2>Lo que hay que <span class="gold">hacer</span></h2>
+    <table>
+      <thead><tr><th>Meta</th><th>Año</th><th>Mes</th><th>Semana</th></tr></thead>
+      <tbody>
+        <tr><td>Ventas cerradas</td><td class="big">21</td><td>1,8</td><td>0,5</td></tr>
+        <tr><td>Alquileres cerrados</td><td class="big">68</td><td>5,7</td><td>1,5</td></tr>
+        <tr><td>Leads nuevos</td><td class="big">2.562</td><td>213</td><td>56</td></tr>
+        <tr><td>Citas / visitas</td><td class="big">332</td><td>28</td><td>7</td></tr>
+        <tr><td>Captaciones</td><td class="big">70</td><td>6</td><td>1,5</td></tr>
+      </tbody>
+    </table>
+    <p class="sub">Ejemplo: ingreso neto de $2.500 al mes, comisión de 3 % y 50 % de split. Calculadora: <code>adn-2027/calculadora_metas.py</code></p>
+  </section>
+
+  <!-- 8. PRESUPUESTO -->
+  <section class="slide">
+    <span class="tag">07 · Presupuesto</span>
+    <h2>Números que <span class="gold">sostienen</span> la meta</h2>
+    <ul class="bullets">
+      <li><strong>Ingreso bruto necesario:</strong> $4.222 al mes, incluyendo gastos y reserva para impuestos.</li>
+      <li><strong>Tu parte por venta:</strong> $1.500 neto. <strong>Por alquiler:</strong> $300 neto.</li>
+      <li><strong>Pauta necesaria:</strong> $3.843 al año. Con $3.600 disponibles, faltan $243. Ajustable.</li>
+      <li><strong>Regla:</strong> si el presupuesto no alcanza, se sube el marketing o se baja la meta de leads pagados.</li>
+    </ul>
+    <div class="alert"><strong>Tu tarea:</strong> completa tu hoja de datos (gastos, ticket, comisión, split, marketing y tasas actuales) y corre la calculadora con tus números.</div>
+  </section>
+
+  <!-- 9. MARCA PERSONAL -->
+  <section class="slide">
+    <span class="tag">08 · Marca personal</span>
+    <h2>Tu bio <span class="gold">vende</span> antes que tú</h2>
+    <div class="grid">
+      <div class="card"><div class="ttl">Quién eres</div><div class="txt">Asesor inmobiliario · Casa Propia Realty</div></div>
+      <div class="card"><div class="ttl">Para quién</div><div class="txt">Ayudo a familias a comprar su primera casa</div></div>
+      <div class="card"><div class="ttl">Prueba</div><div class="txt">+X familias · X años · tu ciudad</div></div>
+      <div class="card"><div class="ttl">Acción</div><div class="txt">👇 Escribe "CASA" para tu plan</div></div>
+    </div>
+    <p class="sub">Misma foto, mismo nombre de usuario y mismo enlace en todas las redes.</p>
+  </section>
+
+  <!-- 10. ANÁLISIS DE PERFIL -->
+  <section class="slide">
+    <span class="tag">09 · Análisis de perfil</span>
+    <h2>Tu perfil, <span class="gold">evaluado</span> en 100 puntos</h2>
+    <div class="grid">
+      <div class="card"><div class="num">20</div><div class="ttl">Perfil y bio</div></div>
+      <div class="card"><div class="num">15</div><div class="ttl">Claridad de nicho</div></div>
+      <div class="card"><div class="num">15</div><div class="ttl">Consistencia</div></div>
+      <div class="card"><div class="num">20</div><div class="ttl">Calidad de contenido</div></div>
+      <div class="card"><div class="num">15</div><div class="ttl">Interacción</div></div>
+      <div class="card"><div class="num">15</div><div class="ttl">Conversión</div></div>
+    </div>
+    <div class="alert">Trae el link de tu perfil o 9 capturas de tus últimas publicaciones. El skill <strong>analisis-perfil-redes</strong> te entrega puntaje, bio reescrita y plan de 30 días.</div>
+  </section>
+
+  <!-- 11. PLAN 90 DÍAS -->
+  <section class="slide">
+    <span class="tag">10 · Plan de 90 días</span>
+    <h2>Arranque <span class="gold">en tres</span> pasos</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="t"><strong>Semanas 1–2 · Diagnóstico:</strong> análisis de perfil, nicho definido, CRM creado, bio actualizada.</div></div>
+      <div class="step"><div class="n">2</div><div class="t"><strong>Semanas 3–8 · Ritmo:</strong> publicar 3 reels y 1 carrusel por semana, 2 captaciones nuevas por semana.</div></div>
+      <div class="step"><div class="n">3</div><div class="t"><strong>Semanas 9–12 · Ajuste:</strong> revisar métricas, corregir el embudo y planear el segundo trimestre.</div></div>
+    </div>
+  </section>
+
+  <!-- 12. CIERRE -->
+  <section class="slide">
+    <span class="tag">Próximos pasos</span>
+    <h2>Lo que hacemos <span class="gold">esta semana</span></h2>
+    <ul class="bullets">
+      <li>Completar la hoja de datos y correr la calculadora.</li>
+      <li>Enviar el link o las capturas de tu perfil para el análisis.</li>
+      <li>Escribir tu frase de valor y tu nicho.</li>
+      <li>Revisar el ADN 2027 completo en la carpeta <strong>adn-2027</strong>.</li>
+    </ul>
+    <div class="quote">"Las mismas 24 horas. La diferencia es quién toma acción."</div>
+    <p class="brand">Rudy Morales · Team Rudy · Casa Propia Realty</p>
+  </section>
+
+</main>
+
+<nav class="controls">
+  <button id="prev" type="button">← Anterior</button>
+  <span class="counter" id="counter"></span>
+  <button id="next" type="button">Siguiente →</button>
+</nav>
+
+<script>
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    var prev = document.getElementById('prev');
+    var next = document.getElementById('next');
+    var counter = document.getElementById('counter');
+    var progress = document.getElementById('progress');
+    var i = 0;
+
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach(function (s, idx) { s.classList.toggle('active', idx === i); });
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+      counter.textContent = (i + 1) + ' / ' + slides.length;
+      progress.style.width = ((i + 1) / slides.length * 100) + '%';
+      try { history.replaceState(null, '', '#' + (i + 1)); } catch (e) {}
+      document.querySelector('.slide.active').scrollTop = 0;
+    }
+
+    prev.addEventListener('click', function () { show(i - 1); });
+    next.addEventListener('click', function () { show(i + 1); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+      if (e.key === 'Home') show(0);
+      if (e.key === 'End') show(slides.length - 1);
+    });
+
+    var start = parseInt((location.hash || '').replace('#', ''), 10);
+    show(isNaN(start) ? 0 : start - 1);
+  })();
+</script>
+</body>
+</html>
