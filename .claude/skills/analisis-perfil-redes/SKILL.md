@@ -45,7 +45,9 @@ Cada criterio se puntúa **0, 1 o 2** según la rúbrica. Escribe la evidencia c
 Entrega el informe con esta estructura (en español, tono directo y sin relleno):
 
 ```
-# Diagnóstico de marca personal · [Nombre] · [Fecha]
+# Diagnóstico de marca personal · Asesor de ejemplo (Valencia) · 2027-01-15
+
+(Ejemplo ficticio: ver `rubrica.md`, sección "Caso de ejemplo", para un informe completo con números.)
 
 ## Puntaje: XX / 100
 | Área | Puntaje | Evidencia |
@@ -93,13 +95,13 @@ Toma las preguntas reales que recibe el asesor (WhatsApp, citas, comentarios). C
 3. **Acción (último 5 s):** qué hacer y cómo (palabra clave, enlace o pregunta).
 
 ### Biblioteca de ganchos (adaptar al nicho)
-- "Lo que nadie te dice antes de [acción inmobiliaria]…"
-- "[Número] errores que cometen quienes quieren comprar su primera casa"
-- "Si estás pagando renta y [situación], mira esto"
-- "Antes de firmar [documento], revisa estos 3 puntos"
-- "Esto me pasó con un cliente y cambió todo"
-- "Pregunta que me hacen todas las semanas: [pregunta]"
-- "Hice cuentas para [caso real]: el resultado te sorprenderá"
+- "Lo que nadie te dice antes de firmar un apartado…"
+- "3 errores que cometen quienes quieren comprar su primera casa"
+- "Si estás pagando renta de $600 al mes, mira esto"
+- "Antes de firmar el documento de compra, revisa estos 3 puntos"
+- "Esto me pasó con una familia de Valencia y cambió todo"
+- "Pregunta que me hacen todas las semanas: ¿cuánto necesito para el inicial?"
+- "Hice cuentas para una familia con $30.000 de ahorro: el resultado te sorprenderá"
 
 ### Paso 4: revisión antes de publicar
 - ¿El gancho se entiende sin sonido?
@@ -112,10 +114,10 @@ Toma las preguntas reales que recibe el asesor (WhatsApp, citas, comentarios). C
 Estructura de 4 líneas (máximo 150 caracteres por línea en Instagram):
 
 ```
-[Quién eres] Asesor inmobiliario · Casa Propia Realty
-[Para quién] Ayudo a [cliente ideal] a [resultado]
-[Prueba] [dato real: familias, años, zona]
-[Acción] 👇 [palabra clave] para [beneficio]
+Asesor inmobiliario · Casa Propia Realty
+Ayudo a familias jóvenes a comprar su primera casa
++45 familias · 6 años · Valencia, Carabobo
+👇 Escribe "CASA" para tu plan gratis
 ```
 
 Evita: "el mejor", "el número 1", adjetivos sin prueba, y listas de servicios sin resultado.
